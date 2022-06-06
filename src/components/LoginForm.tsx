@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { IUser } from '../models/IUser'
+import { IUserOld } from '../models/IUserOld'
 
 interface IState {
-    user: IUser
+    user: IUserOld
 }
 interface IProps { }
 
@@ -25,6 +25,12 @@ let LoginForm: React.FC<IProps> = () => {
         })
     }
 
+    let login = (event: React.FormEvent<HTMLFormElement>):void => {
+        event.preventDefault();
+
+        console.log(state.user)
+    }
+
 
     return (
         <React.Fragment>
@@ -38,7 +44,7 @@ let LoginForm: React.FC<IProps> = () => {
                                 <p className="h4">Login Here</p>
                             </div>
                             <div className='card-body'>
-                                <form>
+                                <form onSubmit={login}>
                                     <div className="mb-2">
                                         <input 
                                             name="username"

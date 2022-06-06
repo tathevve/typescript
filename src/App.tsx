@@ -1,27 +1,21 @@
 import React from 'react';
 import './App.css';
-import Counter from './components/Counter';
-import Customer from './components/Customer';
-import Employee from './components/Employee';
-import Greetings from './components/Greetings';
-import LoginForm from './components/LoginForm';
+import NavBar from './components/NavBar';
+import {Routes, Route, Navigate} from 'react-router-dom'
+import UserList from './components/UserList';
+import UserDetails from './components/UserDetails';
+import About from './components/About';
 
 function App() {
   return (
     <React.Fragment>
-      <h2 className='text-warning'>App Component</h2>
-      <i className='fa fa-home fa-2x'/>
-
-      <div>
-        <Counter />
-      </div>
-
-      <div>
-        <Greetings/>
-      </div>
-      <div>
-        <LoginForm/>
-      </div>
+      <NavBar />
+      <Routes>
+        <Route path={'/'} element={<Navigate to={'/contacts/list'}/>}/>
+        <Route path={'/contacts/list'} element={<UserList/>}/>
+        <Route path={'/contacts/:id'} element={<UserDetails/>}/>
+        <Route path={'/about'} element={<About/>}/>
+      </Routes>
     </React.Fragment>
   );
 }
